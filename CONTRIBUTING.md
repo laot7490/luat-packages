@@ -8,14 +8,13 @@ Packages contain LuaT modules, Lua modules, and optional `.d.luat` declarations 
 luat package init my-package
 ```
 
-Fill in `author` in `package.toml`, then list module paths under `shared`, `client`, or `server`, declaration paths under `declarations`, and published dependency ranges under `[dependencies]`. `import('my-package')` selects `init.luat` or `init.lua`; submodules can be imported by path. Every runtime module must end with a value-returning top-level `return`.
+Fill in `author` in `luat-package.toml`, then list module paths under `shared`, `client`, or `server`, declaration paths under `declarations`, and published dependency ranges under `[dependencies]`. `import('my-package')` selects `init.luat` or `init.lua`; submodules can be imported by path. Every runtime module must end with a value-returning top-level `return`.
 
 ```powershell
 luat package check
-luat package build
 ```
 
-`build` writes a local descriptor under `target/`; it does not edit the manifest. Bump the manifest version with `luat package version 1.1.0` before submitting changed contents for a published package.
+Edit `version` in `luat-package.toml` before changing published contents. Run `luat install` before checking packages with dependencies.
 
 ## Submit
 
