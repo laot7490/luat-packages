@@ -1,21 +1,35 @@
 # Contributing packages
 
-Packages contain LuaT modules, Lua modules, and optional `.d.luat` declarations in one versioned directory. Submit a pull request to this repository; dependencies must already be published.
+Thanks for contributing to the LuaT package registry. A package can include LuaT or Lua modules and optional `.d.luat` declarations. Package metadata lives in `luat-package.toml`.
 
-## Create and check
+## Create and check a package
 
-```powershell
-luat package init my-package
+From the repository root, create a package under `packages/`:
+
+```sh
+luat package init my-package --project packages
 ```
 
-Fill in `author` in `luat-package.toml`, then list module paths under `shared`, `client`, or `server`, declaration paths under `declarations`, and published dependency ranges under `[dependencies]`. `import('my-package')` selects `init.luat` or `init.lua`; submodules can be imported by path. Every runtime module must end with a value-returning top-level `return`.
+Edit `packages/my-package/luat-package.toml`:
 
-```powershell
-luat package check
+- Fill in `author` and a short `description`.
+- List runtime files under `shared`, `client`, or `server`.
+- List declaration files under `declarations`.
+- Add published package dependencies under `[dependencies]` when needed.
+
+The starter package includes `init.luat`. Runtime modules should return a value so other modules can import them. Declarations can describe shared, client, or server APIs; see [`packages/example`](packages/example) for an example.
+
+If the package has dependencies, install them first. Then check the package:
+
+```sh
+luat install --project packages/my-package
+luat package check --project packages/my-package
 ```
 
-Edit `version` in `luat-package.toml` before changing published contents. Run `luat install` before checking packages with dependencies.
+`package check` checks the package and does not publish it.
 
-## Submit
+## Submit a package
 
-Copy the current package directory to `packages/<name>/` and open a pull request. CI validates manifests, declarations, dependency versions, paths, hashes and import rules without executing package code. After review and merge, the registry publishes the new version automatically. Published versions cannot be changed; corrections require a higher version.
+Open a pull request with the new or updated package in `packages/<name>/`. Published versions are immutable, so increase `version` in `luat-package.toml` whenever you change an already published package.
+
+The registry checks package files and dependencies before publishing. Once a change is merged, the registry workflow publishes the package metadata automatically.

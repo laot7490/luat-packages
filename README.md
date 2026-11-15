@@ -2,30 +2,22 @@
 
 Community packages for [LuaT](https://github.com/laot7490/luat), a typed Lua compiler for FiveM resources.
 
-Packages provide declarations/modules that help LuaT understand the libraries and resources used in a project. The registry currently accepts packages in the `@types` scope.
+Packages help LuaT understand the modules and declarations used by a resource. This registry currently includes the `example` package, which demonstrates shared, client, and server declarations.
 
 ## Install a package
 
-From a LuaT project directory, run:
+From your LuaT project folder, add a package by name:
 
-```powershell
-luat add @types/example
+```sh
+luat add example
 ```
 
-LuaT selects the latest stable version and records it in `luat.toml`. To install a specific version, include it in the package name:
+LuaT records the package in `luat.toml` and installs it for your project. To restore packages later, run `luat install`. Remove one with `luat remove example`.
 
-```powershell
-luat add @types/example@1.0.0
-```
+## Available packages
 
-Use `luat install` to restore the versions recorded in `luat.toml`. Use `luat remove @types/example` to remove a package.
+- See [PACKAGES.md](PACKAGES.md) for all available packages.
 
-Installed declarations are stored under `.luat/` beside `luat.toml` and loaded by LuaT automatically.
+## Contribute
 
-## Packages in this registry
-
-- [`@types/example`](types/example) — example declarations for shared, client, and server contexts.
-
-## Contributing
-
-Package contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for instructions on creating, checking, and submitting a package.
+New packages and improvements are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for the short guide to creating and submitting a package.
