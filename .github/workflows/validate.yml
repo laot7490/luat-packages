@@ -30,7 +30,8 @@ jobs:
       - run: cargo build --locked --manifest-path target/luat/Cargo.toml -p luat
       - run: python3 -m unittest discover -s scripts -p test_registry.py
       - name: Require package support in the checked-out CLI
-        run: target/luat/target/debug/luat package --help | grep -F 'Usage: luat package'
+        run: >-
+          target/luat/target/debug/luat package --help | grep -F 'Usage: luat package'
       - run: python3 scripts/registry.py --luat target/luat/target/debug/luat --base "${{ github.event.pull_request.base.sha }}"
 
   publish:
@@ -51,7 +52,8 @@ jobs:
       - run: cargo build --locked --manifest-path target/luat/Cargo.toml -p luat
       - run: python3 -m unittest discover -s scripts -p test_registry.py
       - name: Require package support in the checked-out CLI
-        run: target/luat/target/debug/luat package --help | grep -F 'Usage: luat package'
+        run: >-
+          target/luat/target/debug/luat package --help | grep -F 'Usage: luat package'
       - run: python3 scripts/registry.py --luat target/luat/target/debug/luat --publish --base "${{ github.event.before }}"
       - name: Commit generated indexes
         run: |
