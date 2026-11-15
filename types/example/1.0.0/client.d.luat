@@ -1,0 +1,5 @@
+---@client
+
+declare LuaTExampleClient: {
+	notify: (message: string) -> ()
+}

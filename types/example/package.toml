@@ -1,0 +1,9 @@
+schema = 1
+name = "@types/example"
+description = "Example declarations demonstrating LuaT package contexts"
+license = "MIT"
+
+[versions."1.0.0".files]
+"client.d.luat" = "592118ed4ee3a55c57a06ecb51ada7b71d542d8dbd251fef724b08c3cc2e4af5"
+"server.d.luat" = "6a7c843dc0d52653e84c552ad03053b1890b2cde386b1f44ca2eb911cd5bcbca"
+"shared.d.luat" = "204159affd52ac40eabf12d89a2a0978cd5b4df52035f59ae1ed920de17448e8"

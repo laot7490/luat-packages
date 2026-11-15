@@ -1,0 +1,28 @@
+name: Validate type packages
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/checkout@v4
+        with:
+          repository: laot7490/luat
+          ref: main
+          path: target/luat
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo build --locked --manifest-path target/luat/Cargo.toml -p luat
+      - run: target/luat/target/debug/luat package check --project .
+        env:
+          LUAT_PACKAGE_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
