@@ -1,62 +1,22 @@
 # Contributing packages
 
-Thank you for helping expand the LuaT type package registry. Contributions are submitted as pull requests to this repository.
+Packages contain LuaT modules, Lua modules, and optional `.d.luat` declarations in one versioned directory. Submit a pull request to this repository; dependencies must already be published.
 
-## Create a package
-
-Install a LuaT version that includes the package authoring commands, then run this command from the directory where you want to create the package:
+## Create and check
 
 ```powershell
-luat package init
+luat package init my-package
 ```
 
-Choose **Type** in the interactive prompt, then enter a package name, description, and license. The license defaults to MIT. For example, entering `my_resource` creates a `my_resource/` folder with `package.toml` and a `1.0.0/` directory containing shared, client, and server declaration templates.
-
-Edit the declaration files to describe the library or resource. For example:
-
-```lua
----@shared
-
-typedef ResourceId = number
-```
-
-```lua
----@client
-
-declare MyResource: { notify: (message: string) -> () }
-```
-
-```lua
----@server
-
-declare MyResourceServer: { getName: (id: ResourceId) -> string }
-```
-
-## Check and build
-
-Enter the package folder and run:
+Fill in `author` in `package.toml`, then list module paths under `shared`, `client`, or `server`, declaration paths under `declarations`, and published dependency ranges under `[dependencies]`. `import('my-package')` selects `init.luat` or `init.lua`; submodules can be imported by path. Every runtime module must end with a value-returning top-level `return`.
 
 ```powershell
 luat package check
 luat package build
 ```
 
-`check` validates the package without changing its files. `build` checks it and records the declaration file names and hashes in `package.toml`. Resolve any errors and run the commands again before submitting.
+`build` writes a local descriptor under `target/`; it does not edit the manifest. Bump the manifest version with `luat package version 1.1.0` before submitting changed contents for a published package.
 
-## Submit a package
+## Submit
 
-Copy the complete package folder into `types/<name>/` in your fork. Keep the package name in `package.toml` aligned with the folder name, and include the version directory. Review the changes, then open a pull request targeting `main`.
-
-GitHub Actions checks the package metadata, files, hashes, and declarations. The registry also prevents changes to already published versions. Add corrections in a new version instead of editing a published release.
-
-## Publish another version
-
-From the package folder, create a version and prepare it:
-
-```powershell
-luat package version 1.1.0
-luat package check
-luat package build
-```
-
-Use a new valid Semantic Version. The new version starts with the latest existing declaration files; update them as needed before checking and building.
+Copy the current package directory to `packages/<name>/` and open a pull request. CI validates manifests, declarations, dependency versions, paths, hashes and import rules without executing package code. After review and merge, the registry publishes the new version automatically. Published versions cannot be changed; corrections require a higher version.

@@ -1,0 +1,12 @@
+name = "example"
+version = "1.0.0"
+author = "LuaT contributors"
+description = "Example declarations demonstrating shared, client, and server contexts"
+license = "MIT"
+
+declarations = ["declarations/**/*.d.luat"]
+shared = []
+client = []
+server = []
+
+[dependencies]

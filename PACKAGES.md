@@ -1,5 +1,3 @@
 # Available Packages
 
-## Types
-
-- [`@types/example`](types/example) — example declarations for shared, client, and server contexts.
+Packages combine optional declarations with lazy LuaT/Lua modules. See `packages/` for source and `index/` for immutable published version metadata.

@@ -1,8 +1,8 @@
 # LuaT Packages
 
-Community type packages for [LuaT](https://github.com/laot7490/luat), a typed Lua compiler for FiveM resources.
+Community packages for [LuaT](https://github.com/laot7490/luat), a typed Lua compiler for FiveM resources.
 
-Packages provide declarations that help LuaT understand the libraries and resources used in a project. The registry currently accepts packages in the `@types` scope.
+Packages provide declarations/modules that help LuaT understand the libraries and resources used in a project. The registry currently accepts packages in the `@types` scope.
 
 ## Install a package
 
