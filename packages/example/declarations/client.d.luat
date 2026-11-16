@@ -1,5 +1,9 @@
 ---@client
 
+typedef LuaTExampleType = {
+    id: number
+}
+
 declare LuaTExampleClient: {
 	notify: (message: string) -> ()
 }
