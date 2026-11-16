@@ -7,23 +7,24 @@ Thanks for contributing to the LuaT package registry. A package can include LuaT
 From the repository root, create a package under `packages/`:
 
 ```sh
-luat package init my-package --project packages
+luat package init --project packages
 ```
 
-Edit `packages/my-package/luat-package.toml`:
+The command asks for the package name, author, description, version, and license, then creates `packages/<name>/` with a manifest and starter `init.luat`. Version defaults to `1.0.0`; license defaults to `MIT`.
 
-- Fill in `author` and a short `description`.
+Edit the manifest to:
+
 - List runtime files under `shared`, `client`, or `server`.
 - List declaration files under `declarations`.
 - Add published package dependencies under `[dependencies]` when needed.
 
-The starter package includes `init.luat`. Runtime modules should return a value so other modules can import them. Declarations can describe shared, client, or server APIs; see [`packages/example`](packages/example) for an example.
+Runtime modules should return a value so other modules can import them. Declarations can describe shared, client, or server APIs; see [`packages/example`](packages/example) for an example.
 
 If the package has dependencies, install them first. Then check the package:
 
 ```sh
-luat install --project packages/my-package
-luat package check --project packages/my-package
+luat install --project packages/<name>
+luat package check --project packages/<name>
 ```
 
 `package check` checks the package and does not publish it.
