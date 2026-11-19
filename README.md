@@ -38,7 +38,7 @@ local player: ExampleServerPlayer = { id = 1, connected = true }
 
 ## Available packages
 
-- See [PACKAGES.md](PACKAGES.md) for all available packages.
+- See [packages](packages) for all packages.
 
 ## Contribute
 
