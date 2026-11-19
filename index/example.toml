@@ -1,0 +1,11 @@
+schema = 2
+name = "example"
+
+[versions."1.0.0"]
+commit = "233920e8db0816d99506af4b31c467ba12ed292e"
+[versions."1.0.0".dependencies]
+[versions."1.0.0".files]
+"declarations/client.d.luat" = "f798d8b59d191d2dbc74b7a0771a92246ecf6812ba1847b442683bbdee285572"
+"declarations/server.d.luat" = "6a7c843dc0d52653e84c552ad03053b1890b2cde386b1f44ca2eb911cd5bcbca"
+"declarations/shared.d.luat" = "204159affd52ac40eabf12d89a2a0978cd5b4df52035f59ae1ed920de17448e8"
+"luat-package.toml" = "4eadadb2d88c9f9d9d2447b11ce4ebff7cd3424fb5e06d94be7b806095184dfc"
