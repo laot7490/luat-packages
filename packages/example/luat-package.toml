@@ -1,12 +1,11 @@
 name = "example"
 version = "1.0.0"
 author = "LuaT contributors"
-description = "Example declarations demonstrating shared, client, and server contexts"
+description = "A runtime module with shared, client, and server types"
 license = "MIT"
 
-declarations = ["declarations/**/*.d.luat"]
-shared = []
-client = []
-server = []
+shared = ["declarations/shared.d.luat", "init.luat"]
+client = ["declarations/client.d.luat"]
+server = ["declarations/server.d.luat"]
 
 [dependencies]

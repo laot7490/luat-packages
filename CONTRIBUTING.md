@@ -14,11 +14,10 @@ The command asks for the package name, author, description, version, and license
 
 Edit the manifest to:
 
-- List runtime files under `shared`, `client`, or `server`.
-- List declaration files under `declarations`.
+- List runtime files and `.d.luat` files under `shared`, `client`, or `server`.
 - Add published package dependencies under `[dependencies]` when needed.
 
-Runtime modules should return a value so other modules can import them. Declarations can describe shared, client, or server APIs; see [`packages/example`](packages/example) for an example.
+Runtime modules should return a value so other modules can import them. The manifest lists determine declaration visibility. Shared declarations are available on both sides. Client and server declarations are available on their own side. See the [example package manifest](packages/example/luat-package.toml) for the three lists in use.
 
 If the package has dependencies, install them first. Then check the package:
 

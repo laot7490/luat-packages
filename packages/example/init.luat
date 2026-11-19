@@ -1,0 +1,5 @@
+local function printGreeting(name: ExampleName): ()
+    print(`Hello, {name}!`)
+end
+
+return { print = printGreeting }

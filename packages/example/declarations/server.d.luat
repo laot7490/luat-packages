@@ -1,5 +1,4 @@
----@server
-
-declare LuaTExampleServer: {
-	getName: (id: ExampleId) -> string
+typedef ExampleServerPlayer = {
+    id: ExampleId,
+    connected: boolean
 }

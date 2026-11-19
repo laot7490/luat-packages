@@ -1,3 +1,2 @@
----@shared
-
 typedef ExampleId = number
+typedef ExampleName = string
